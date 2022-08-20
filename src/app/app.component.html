@@ -1,0 +1,56 @@
+<div class="main">
+
+  <mat-toolbar color="primary">
+
+    <span>My App</span>
+
+    <span class="example-spacer"></span>
+
+    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
+    &nbsp;
+    &nbsp;
+
+    <mat-slide-toggle
+    [aria-label]="'Toggle sidenav'"
+    class="example-margin">
+      Dark Theme
+  </mat-slide-toggle>
+  </mat-toolbar>
+
+  <form class="example-form">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Type your text here</mat-label>
+      <input matInput placeholder="http://www.site.com" #input>
+    </mat-form-field>
+
+    <button color="primary" mat-raised-button>Generate</button>
+
+    {{input.value}}
+    </form>
+
+    <br>
+
+    <mat-card class="example-card">
+
+      <mat-card-subtitle>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
+        &nbsp;
+        Dog Breed</mat-card-subtitle>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-content>
+        <p>This card has divider and indeterminate progress as footer</p>
+        <p> Lorem ipsum dolor sit, amet consectetur adipisicing elit. Nulla fugiat commodi possimus similique suscipit labore placeat doloremque distinctio voluptatibus laboriosam dignissimos nam,
+          illum cum reiciendis illo voluptatum tempora nesciunt libero!</p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button>SHARE</button>
+      </mat-card-actions>
+      <mat-card-footer>
+        <mat-progress-bar mode="indeterminate" [bufferValue]="0"></mat-progress-bar>
+      </mat-card-footer>
+    </mat-card>
+
+</div>
+
+
+
