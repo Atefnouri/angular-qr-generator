@@ -1,3 +1,31 @@
+
+.darkMode {
+  --color-bg: #120933;
+  --color-fg: #fbf5f5;
+}
+
+@media (prefers-color-scheme: light) {
+  .darkMode {
+    --color-bg: #ffffff;
+    --color-fg: #000000;
+  }
+}
+
+.darkMode {
+
+  background-color: var(--color-bg);
+  color: var(--color-fg);
+}
+
+::placeholder {
+  color: var(--color-fg);
+  opacity: 1;
+}
+
+
+
+
+
 .example-form {
   width: 100%;
 }
@@ -15,3 +43,16 @@
 
   padding: 5px;
 }
+
+.dark {
+  filter:invert(1)hue-rotate(180deg);
+}
+
+
+/*
+custom properties
+*/
+
+
+
+

@@ -1,4 +1,4 @@
-<div class="main">
+<div class="main darkMode">
 
   <mat-toolbar color="primary">
 
@@ -6,33 +6,36 @@
 
     <span class="example-spacer"></span>
 
-    <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
+    <mat-icon *ngIf="darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
+    <mat-icon *ngIf="!darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="light_mode"></mat-icon>
     &nbsp;
-    &nbsp;
-
-    <mat-slide-toggle
-    [aria-label]="'Toggle sidenav'"
-    class="example-margin">
-      Dark Theme
-  </mat-slide-toggle>
   </mat-toolbar>
 
-  <form class="example-form">
-    <mat-form-field class="example-full-width" appearance="fill">
+  <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
+    <mat-form-field class="example-full-width darkMode" appearance="fill">
       <mat-label>Type your text here</mat-label>
-      <input matInput placeholder="http://www.site.com" #input>
+      <input  name="usertext" #userText="ngModel"  required  [(ngModel)]="qrForm.qrText" matInput placeholder="http://www.site.com" >
     </mat-form-field>
+    <p *ngIf="userText.errors && userText.touched && userText.dirty " >
+      <small> your test in not valid  </small>
+    </p>
 
-    <button color="primary" mat-raised-button>Generate</button>
+    <button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>
 
-    {{input.value}}
     </form>
 
     <br>
 
-    <mat-card class="example-card">
+    <mat-chip-list aria-label="Fish selection">
+      <mat-chip>Text</mat-chip>
+      <mat-chip color="primary" selected>Phone</mat-chip>
+      <mat-chip color="accent" selected>Link</mat-chip>
+    </mat-chip-list>
 
-      <mat-card-subtitle>
+
+    <mat-card class="example-card darkMode">
+
+      <mat-card-subtitle class="darkMode">
         <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
         &nbsp;
         Dog Breed</mat-card-subtitle>
