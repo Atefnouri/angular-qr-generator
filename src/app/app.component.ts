@@ -10,7 +10,8 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
-
+//import { QRCodeModule } from 'angularx-qrcode/lib/angularx-qrcode.module';
+import { QRCodeModule } from 'angularx-qrcode';
 
 
 
@@ -27,22 +28,28 @@ import {MatChipsModule} from '@angular/material/chips';
     MatProgressBarModule,
     CommonModule,
     FormsModule,
-    MatChipsModule
+    MatChipsModule,
+    QRCodeModule
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  qrForm = {
+  public qrForm = {
     qrText: '',
   }
   title = 'angularqrgen';
   public darkMode = false;
+  public TextToConvert:string = "";
 
 
   public sendForm = () => {
-    console.log(this.qrForm);  }
+    //console.log(this.qrForm);
+    //console.log(this.qrForm.qrText);
+    this.TextToConvert = this.qrForm.qrText;
+
+  }
 
   // public toggleDarkMode = () => {
   //   this.darkMode = !this.darkMode;
