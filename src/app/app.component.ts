@@ -43,6 +43,10 @@ export class AppComponent {
   public darkMode = false;
   public TextToConvert:string = "";
 
+  public textChecker:boolean = false;
+  public phoneChecker:boolean = false;
+  public linkChecker:boolean = false;
+
 
   public sendForm = () => {
     //console.log(this.qrForm);
@@ -55,6 +59,42 @@ export class AppComponent {
   //   this.darkMode = !this.darkMode;
   //   console.log(this.darkMode);
   // }
+  //(change)="parsText();"
+
+  public parsText = () => {
+
+    //this.textChecker = this.regexHandler(1);
+    this.phoneChecker = this.regexHandler(1);
+    this.linkChecker = this.regexHandler(2);
+
+
+  }
+
+
+
+  private regexHandler = (nb :number):boolean => {
+
+    let regex :RegExp;
+
+    switch (nb) {
+
+      //check phone number
+      case 1:
+      regex = /^\s*(?:\+?(\d{1,3}))?([-. (]*(\d{3})[-. )]*)?((\d{3})[-. ]*(\d{2,4})(?:[-.x ]*(\d+))?)\s*$/ig;
+      return regex.test( this.qrForm.qrText);
+      break;
+      //check url
+      case 2:
+      regex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig;
+      return regex.test( this.qrForm.qrText);
+      break;
+
+      default:
+        return false;
+        break;
+    }
+  }
+
 
 
 
