@@ -12,6 +12,7 @@ import { FormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 //import { QRCodeModule } from 'angularx-qrcode/lib/angularx-qrcode.module';
 import { QRCodeModule } from 'angularx-qrcode';
+import { SafeUrl } from '@angular/platform-browser';
 
 
 
@@ -46,12 +47,13 @@ export class AppComponent {
   public textChecker:boolean = false;
   public phoneChecker:boolean = false;
   public linkChecker:boolean = false;
-
+  public qrCodeDownloadLink: SafeUrl = "";
 
   public sendForm = () => {
     //console.log(this.qrForm);
     //console.log(this.qrForm.qrText);
     this.TextToConvert = this.qrForm.qrText;
+    console.log("qr is gernerated");
 
   }
 
@@ -70,6 +72,10 @@ export class AppComponent {
 
   }
 
+
+  onChangeURL(url: SafeUrl) {
+    this.qrCodeDownloadLink = url;
+  }
 
 
   private regexHandler = (nb :number):boolean => {

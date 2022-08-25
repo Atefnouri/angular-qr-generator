@@ -2,10 +2,8 @@
 
   <mat-toolbar color="primary">
 
-    <span>My App
-
+    <span>
       <mat-icon> qr_code_scanner </mat-icon>
-
     </span>
 
     <span class="example-spacer"></span>
@@ -58,12 +56,17 @@
       <mat-card-title>scan the result</mat-card-title>
       <mat-card-content>
 
-        <qrcode [qrdata]="TextToConvert" [width]="256" [errorCorrectionLevel]="'M'"></qrcode>
+      <qrcode
+      [qrdata]="TextToConvert"
+      [width]="256"
+      (qrCodeURL)="onChangeURL($event)"
+      [errorCorrectionLevel]="'M'">
+      </qrcode>
 
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button>DOWNLOAD</button>
         <button mat-button>SHARE</button>
+        <a [href]="qrCodeDownloadLink" download="qrcode">Download</a>
       </mat-card-actions>
       <mat-card-footer>
         <mat-progress-bar mode="indeterminate" [bufferValue]="0"></mat-progress-bar>
