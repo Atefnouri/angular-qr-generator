@@ -13,6 +13,8 @@ import {MatChipsModule} from '@angular/material/chips';
 //import { QRCodeModule } from 'angularx-qrcode/lib/angularx-qrcode.module';
 import { QRCodeModule } from 'angularx-qrcode';
 import { SafeUrl } from '@angular/platform-browser';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+
 
 
 
@@ -30,7 +32,9 @@ import { SafeUrl } from '@angular/platform-browser';
     CommonModule,
     FormsModule,
     MatChipsModule,
-    QRCodeModule
+    QRCodeModule,
+    MatSnackBarModule
+
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -49,11 +53,17 @@ export class AppComponent {
   public linkChecker:boolean = false;
   public qrCodeDownloadLink: SafeUrl = "";
 
+constructor(private _snackBar: MatSnackBar){
+
+}
+
+
   public sendForm = () => {
     //console.log(this.qrForm);
     //console.log(this.qrForm.qrText);
     this.TextToConvert = this.qrForm.qrText;
     console.log("qr is gernerated");
+    this._snackBar.open("QR code is gen succ 😛", "done");
 
   }
 
