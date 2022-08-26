@@ -14,6 +14,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { QRCodeModule } from 'angularx-qrcode';
 import { SafeUrl } from '@angular/platform-browser';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatSelectModule} from '@angular/material/select';
 
 
 
@@ -33,7 +34,8 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
     FormsModule,
     MatChipsModule,
     QRCodeModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatSelectModule
 
   ],
   selector: 'app-root',
@@ -51,6 +53,7 @@ export class AppComponent {
   public textChecker:boolean = false;
   public phoneChecker:boolean = false;
   public linkChecker:boolean = false;
+  public emailChecker:boolean = false;
   public qrCodeDownloadLink: SafeUrl = "";
 
 constructor(private _snackBar: MatSnackBar){
@@ -63,7 +66,7 @@ constructor(private _snackBar: MatSnackBar){
     //console.log(this.qrForm.qrText);
     this.TextToConvert = this.qrForm.qrText;
     console.log("qr is gernerated");
-    this._snackBar.open("QR code is gen succ 😛", "done");
+    //this._snackBar.open("QR code is gen succ 😛", "done");
 
   }
 
@@ -79,7 +82,7 @@ constructor(private _snackBar: MatSnackBar){
     this.TextToConvert = this.qrForm.qrText;
     this.phoneChecker = this.regexHandler(1);
     this.linkChecker = this.regexHandler(2);
-
+    this.emailChecker = this.regexHandler(3);
 
   }
 
@@ -103,6 +106,11 @@ constructor(private _snackBar: MatSnackBar){
       //check url
       case 2:
       regex = /[(http(s)?):\/\/(www\.)?a-zA-Z0-9@:%._\+~#=]{2,256}\.[a-z]{2,6}\b([-a-zA-Z0-9@:%_\+.~#?&//=]*)/ig;
+      return regex.test( this.qrForm.qrText);
+      break;
+      //email
+      case 3:
+      regex = /[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?/ig;
       return regex.test( this.qrForm.qrText);
       break;
 

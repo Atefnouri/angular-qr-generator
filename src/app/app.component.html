@@ -10,6 +10,7 @@
 
     <mat-icon *ngIf="darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
     <mat-icon *ngIf="!darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="light_mode"></mat-icon>
+
     &nbsp;
   </mat-toolbar>
 
@@ -28,7 +29,7 @@
       <small> your test in not valid  </small>
     </p>
 
-    <button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>
+    <!--<button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>-->
 
     </form>
 
@@ -44,6 +45,12 @@
        [disabled]="!linkChecker">
        <mat-icon>link</mat-icon> &nbsp;
        Link</mat-chip>
+
+       <mat-chip  color="accent" selected
+       [disabled]="!emailChecker">
+       <mat-icon>email </mat-icon> &nbsp;
+     email </mat-chip>
+
     </mat-chip-list>
 
 
@@ -80,6 +87,44 @@
         </mat-progress-bar>
       </mat-card-footer>
     </mat-card>
+
+
+    <h4>Settings</h4>
+
+<hr>
+<h3> Theming</h3>
+
+<mat-form-field appearance="fill">
+  <mat-label>Light / Dark Mode</mat-label>
+  <mat-select>
+    <mat-option>
+      Automatic (with os settings)
+    </mat-option>
+    <mat-option>
+      Light Mode
+    </mat-option>
+    <mat-option>
+      Dark Mode
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+
+<hr>
+<h3>Perfernces</h3>
+
+<mat-form-field appearance="fill">
+  <mat-label>Download File Format</mat-label>
+  <mat-select>
+    <mat-option>
+     PNG
+    </mat-option>
+    <mat-option>
+      SVG
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
 
 
 </div>
