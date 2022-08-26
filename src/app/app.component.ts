@@ -46,7 +46,7 @@ export class AppComponent {
   }
   title = 'angularqrgen';
   public darkMode = false;
-  public TextToConvert:string = "";
+  public TextToConvert:string = "welcome";
 
   public textChecker:boolean = false;
   public phoneChecker:boolean = false;
@@ -76,6 +76,7 @@ constructor(private _snackBar: MatSnackBar){
   public parsText = () => {
 
     //this.textChecker = this.regexHandler(1);
+    this.TextToConvert = this.qrForm.qrText;
     this.phoneChecker = this.regexHandler(1);
     this.linkChecker = this.regexHandler(2);
 
