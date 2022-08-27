@@ -1,18 +1,97 @@
+<mat-drawer-container class="example-container" autosize>
+
+  <mat-drawer #drawer class="example-sidenav" mode="side">
+
+    <h4>Settings</h4>
+
+    <hr>
+    <h3> Theming</h3>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Light / Dark Mode</mat-label>
+      <mat-select>
+        <mat-option>
+          Automatic (with os settings)
+        </mat-option>
+        <mat-option>
+          Light Mode
+        </mat-option>
+        <mat-option>
+          Dark Mode
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="fill">
+      <mat-label>Theme color</mat-label>
+      <mat-select>
+        <mat-option>
+          indego-pink
+        </mat-option>
+        <mat-option>
+         lime green
+        </mat-option>
+        <mat-option>
+          Blue
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <hr>
+    <h3>Perfernces</h3>
+
+    <mat-form-field appearance="fill">
+      <mat-label>Download File Format</mat-label>
+      <mat-select>
+        <mat-option>
+         PNG
+        </mat-option>
+        <mat-option>
+          SVG
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+
+  </mat-drawer>
+
+
+
+<mat-toolbar color="primary" id="toolbar-header">
+  <a mat-button href="#" aria-label="Example icon-button with menu icon">
+    <mat-icon>qr_code_2</mat-icon>
+    angularx-qrcode
+  </a>
+
+  <span class="toolbar-header-spacer"></span>
+  <a mat-button href="https://github.com/Atefnouri/angular-qr-generator" aria-label="Example icon-button with heart icon">
+    <mat-icon>code</mat-icon>
+    Github
+  </a>
+
+
+  <a mat-button href="#" (click)="drawer.toggle()"  aria-label="Example icon-button with heart icon">
+    <mat-icon>settings</mat-icon>
+
+  </a>
+
+
+  <!-- <mat-icon *ngIf="darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
+  <mat-icon *ngIf="!darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="light_mode"></mat-icon> -->
+
+
+</mat-toolbar>
+
+
+<div class="page-header">
+  <h1>Angular qr code gen app</h1>
+</div>
+
+
 <div class="main darkMode">
 
-  <mat-toolbar color="primary">
 
-    <span>
-      <mat-icon> qr_code_scanner </mat-icon>
-    </span>
-
-    <span class="example-spacer"></span>
-
-    <mat-icon *ngIf="darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
-    <mat-icon *ngIf="!darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="light_mode"></mat-icon>
-
-    &nbsp;
-  </mat-toolbar>
 
   <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
     <mat-form-field class="example-full-width darkMode" appearance="fill">
@@ -89,45 +168,13 @@
     </mat-card>
 
 
-    <h4>Settings</h4>
-
-<hr>
-<h3> Theming</h3>
-
-<mat-form-field appearance="fill">
-  <mat-label>Light / Dark Mode</mat-label>
-  <mat-select>
-    <mat-option>
-      Automatic (with os settings)
-    </mat-option>
-    <mat-option>
-      Light Mode
-    </mat-option>
-    <mat-option>
-      Dark Mode
-    </mat-option>
-  </mat-select>
-</mat-form-field>
-
-
-<hr>
-<h3>Perfernces</h3>
-
-<mat-form-field appearance="fill">
-  <mat-label>Download File Format</mat-label>
-  <mat-select>
-    <mat-option>
-     PNG
-    </mat-option>
-    <mat-option>
-      SVG
-    </mat-option>
-  </mat-select>
-</mat-form-field>
 
 
 
 </div>
+
+
+</mat-drawer-container>
 
 
 

@@ -15,6 +15,10 @@ import { QRCodeModule } from 'angularx-qrcode';
 import { SafeUrl } from '@angular/platform-browser';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
+//import {MatDialog, MatDialogModule} from '@angular/material/dialog';
+import {MatSidenavModule} from '@angular/material/sidenav';
+
+
 
 
 
@@ -35,8 +39,8 @@ import {MatSelectModule} from '@angular/material/select';
     MatChipsModule,
     QRCodeModule,
     MatSnackBarModule,
-    MatSelectModule
-
+    MatSelectModule,
+    MatSidenavModule
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -59,6 +63,18 @@ export class AppComponent {
 constructor(private _snackBar: MatSnackBar){
 
 }
+
+
+// openDialogHandler() {
+//   const dialogRef = this.dialog.open(SettingsDialogueCdompoentns);
+//   console.log(dialogRef);
+
+//   dialogRef.afterClosed().subscribe(result => {
+//     console.log(`Dialog result: ${result}`);
+//   });
+// }
+
+
 
 
   public sendForm = () => {
@@ -123,4 +139,14 @@ constructor(private _snackBar: MatSnackBar){
 
 
 
+
+
+
 }
+
+
+
+
+
+
+

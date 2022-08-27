@@ -54,5 +54,46 @@ custom properties
 */
 
 
+html,
+body {
+  height: 100vh;
+}
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+#toolbar-header {
+  box-shadow: 0 3px 5px -1px #0003, 0 6px 10px #00000024, 0 1px 18px #0000001f;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 2;
+}
+
+.toolbar-header-spacer {
+  flex: 1 1 auto;
+}
+
+.page-header {
+  background: #3f51b5;
+  padding-left: 20px;
+  margin-top: 64px;
+  overflow-y: auto;
+}
+
+.page-header h1 {
+  color: #ffffff;
+  font-weight: 300;
+  margin: 0;
+  padding: 20px 8px;
+  font-size: 20px;
+}
 
 
+
+.example-sidenav {
+  padding: 20px;
+  width: 250px;;
+}
