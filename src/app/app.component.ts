@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import {MatChipsModule} from '@angular/material/chips';
 //import { QRCodeModule } from 'angularx-qrcode/lib/angularx-qrcode.module';
-import { QRCodeModule } from 'angularx-qrcode';
+import { QRCodeElementType, QRCodeModule } from 'angularx-qrcode';
 import { SafeUrl } from '@angular/platform-browser';
 import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
@@ -59,6 +59,7 @@ export class AppComponent {
   public linkChecker:boolean = false;
   public emailChecker:boolean = false;
   public qrCodeDownloadLink: SafeUrl = "";
+  public qrCodeElmentType:QRCodeElementType ='img';
 
 constructor(private _snackBar: MatSnackBar){
 

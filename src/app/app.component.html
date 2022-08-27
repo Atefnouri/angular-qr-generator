@@ -43,11 +43,11 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Download File Format</mat-label>
-      <mat-select>
-        <mat-option>
+      <mat-select [(ngModel)]="qrCodeElmentType"  >
+        <mat-option value="img">
          PNG
         </mat-option>
-        <mat-option>
+        <mat-option value="svg">
           SVG
         </mat-option>
       </mat-select>
@@ -146,7 +146,8 @@
       [qrdata]="TextToConvert"
       [width]="256"
       (qrCodeURL)="onChangeURL($event)"
-      [errorCorrectionLevel]="'M'">
+      [errorCorrectionLevel]="'M'"
+      [elementType]="qrCodeElmentType">
       </qrcode>
 
       </mat-card-content>
