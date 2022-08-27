@@ -62,8 +62,22 @@ export class AppComponent {
   public qrCodeElmentType:QRCodeElementType ='img';
 
 constructor(private _snackBar: MatSnackBar){
-
+this.loadFromLocalStorage();
 }
+
+
+  loadFromLocalStorage() {
+    if (typeof localStorage !== 'undefined') {
+      this.qrCodeElmentType = (localStorage.getItem('qrCodeElmentType')! as QRCodeElementType) ;
+  } else {
+    (localStorage as Storage).setItem('qrCodeElmentType','img');
+  }
+  }
+
+
+  // private getLoclStorage():string{
+  //   //return localStorage.getItem('qrCodeElmentType');
+  // }
 
 
 // openDialogHandler() {
@@ -83,8 +97,13 @@ constructor(private _snackBar: MatSnackBar){
     //console.log(this.qrForm.qrText);
     this.TextToConvert = this.qrForm.qrText;
     console.log("qr is gernerated");
-    //this._snackBar.open("QR code is gen succ 😛", "done");
 
+
+  }
+
+
+  saveSettingHandler = () => {
+    this._snackBar.open("Settings are saved 😄", "done");
   }
 
   // public toggleDarkMode = () => {
@@ -138,6 +157,11 @@ constructor(private _snackBar: MatSnackBar){
   }
 
 
+  changeTypeHandler = (e:any) =>{
+    console.log("value is changed",e);
+    localStorage.setItem('qrCodeElmentType',e);
+
+  }
 
 
 
