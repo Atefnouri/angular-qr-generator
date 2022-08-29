@@ -17,5 +17,5 @@ if (environment.production) {
 // platformBrowserDynamic().bootstrapModule(AppModule)
 //   .catch(err => console.error(err));
 bootstrapApplication(AppComponent, {
-    providers: [importProvidersFrom(BrowserAnimationsModule)]
+    providers: [importProvidersFrom(BrowserAnimationsModule, BrowserAnimationsModule)]
 });
