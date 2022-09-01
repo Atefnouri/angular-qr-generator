@@ -17,6 +17,7 @@ import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatSelectModule} from '@angular/material/select';
 //import {MatDialog, MatDialogModule} from '@angular/material/dialog';
 import {MatSidenavModule} from '@angular/material/sidenav';
+import { MaterialModule } from './Material/Material.module';
 
 
 
@@ -26,21 +27,12 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 @Component({
   standalone:true,
   imports: [
-    MatSliderModule,
-    MatToolbarModule,
-    MatSlideToggleModule,
-    MatInputModule,
-    MatButtonModule,
-    MatIconModule,
-    MatCardModule,
-    MatProgressBarModule,
     CommonModule,
     FormsModule,
     MatChipsModule,
     QRCodeModule,
-    MatSnackBarModule,
-    MatSelectModule,
-    MatSidenavModule
+    MaterialModule
+
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
