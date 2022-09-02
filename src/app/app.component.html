@@ -13,11 +13,9 @@ autosize>
     <mat-form-field appearance="fill">
       <mat-label>Light / Dark Mode</mat-label>
       <mat-select (selectionChange)="themeHandler($event.value)" >
-        <mat-option value="os">
-          Automatic (with os settings)
-        </mat-option>
         <mat-option value="light">
-          Light Mode
+          Light Mode <span class="material-symbols-outlined">
+            </span>
         </mat-option>
         <mat-option value="dark">
           Dark Mode

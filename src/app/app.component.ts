@@ -49,8 +49,12 @@ this.loadFromLocalStorage();
   loadFromLocalStorage() {
     if (typeof localStorage !== 'undefined') {
       this.qrCodeElmentType = (localStorage.getItem('qrCodeElmentType')! as QRCodeElementType) ;
+      //let darModeVal = localStorage.getItem('darkMode');
+      this.darkMode =    Boolean(JSON.parse((localStorage.getItem('darkMode') as string)));
+
   } else {
     (localStorage as Storage).setItem('qrCodeElmentType','img');
+    (localStorage as Storage).setItem('darkMode',String(this.darkMode));
   }
   }
 
@@ -96,11 +100,13 @@ this.loadFromLocalStorage();
   saveSettingHandler = () => {
 
     let snackClass = this.darkMode ? "darkSnackBar" : "lightSnackBar";
-    this._snackBar.open("settings saved", 'dismiss',
+    this._snackBar.open("settings saved ✔️", 'dismiss',
     {
       duration: 2000,
       panelClass: [snackClass]
     });
+
+    localStorage.setItem('darkMode',String(this.darkMode));
   }
 
   // public toggleDarkMode = () => {
