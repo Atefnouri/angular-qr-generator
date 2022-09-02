@@ -26,7 +26,8 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/app/themes.scss"
+              "src/themes/light.scss",
+              "src/themes/dark.scss"
             ],
             "scripts": []
           },

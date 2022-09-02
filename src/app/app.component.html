@@ -1,4 +1,7 @@
-<mat-drawer-container class="example-container" autosize>
+<mat-drawer-container
+class="example-container light-theme"
+[ngClass]="{'dark-theme' : darkMode}"
+autosize>
 
   <mat-drawer #drawer class="example-sidenav" mode="side">
 
@@ -9,14 +12,14 @@
 
     <mat-form-field appearance="fill">
       <mat-label>Light / Dark Mode</mat-label>
-      <mat-select>
-        <mat-option>
+      <mat-select (selectionChange)="themeHandler($event.value)" >
+        <mat-option value="os">
           Automatic (with os settings)
         </mat-option>
-        <mat-option>
+        <mat-option value="light">
           Light Mode
         </mat-option>
-        <mat-option>
+        <mat-option value="dark">
           Dark Mode
         </mat-option>
       </mat-select>
