@@ -3,6 +3,7 @@ class="example-container light-theme"
 [ngClass]="{'dark-theme' : darkMode}"
 autosize>
 
+<!--Settings-->
   <mat-drawer #drawer class="example-sidenav" mode="side">
 
     <h4>Settings</h4>
@@ -12,7 +13,7 @@ autosize>
 
     <mat-form-field appearance="fill">
       <mat-label>Light / Dark Mode</mat-label>
-      <mat-select (selectionChange)="themeHandler($event.value)" >
+      <mat-select   [(ngModel)]="selectedTheme" (selectionChange)="themeHandler($event.value)" >
         <mat-option value="light">
           Light Mode <span class="material-symbols-outlined">
             </span>
@@ -57,6 +58,21 @@ autosize>
     </mat-form-field>
 
   <br>
+
+
+  <mat-divider></mat-divider>
+    <h5>Width</h5>
+    <mat-slider
+    [(ngModel)]="qrCodeWidth"
+  thumbLabel
+  tickInterval="1000"
+  step="1"
+  min="256"
+  max="400"
+  aria-label="units"></mat-slider>
+
+  <br>
+
   <button mat-flat-button (click)="drawer.toggle()" >cancel</button> &nbsp;&nbsp;
   <button mat-flat-button color="accent" (click)="saveSettingHandler()">save</button>
 
@@ -90,63 +106,106 @@ autosize>
 </mat-toolbar-row>
 
 
-<mat-toolbar-row class="">
+<mat-toolbar-row >
   <h1>Angular qr code gen app</h1>
 </mat-toolbar-row>
 
+
 </mat-toolbar>
 
-<mat-divider></mat-divider>
 
-<mat-card>
-  <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
-    <mat-form-field class="example-full-width darkMode" appearance="fill">
-      <mat-label>Type your text here</mat-label>
-      <input
-      name="usertext"
-      #userText="ngModel"
-      required
-      (keyup)="parsText();"
-      [(ngModel)]="qrForm.qrText"
-      matInput placeholder="http://www.site.com" >
-    </mat-form-field>
-    <p *ngIf="userText.errors && userText.touched && userText.dirty " >
-      <small> your test in not valid  </small>
-    </p>
-
-    <!--<button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>-->
-
-    </form>
-
-</mat-card>
+<mat-grid-list cols="3" rowHeight="800px" gutterSize="200px">
+  <mat-grid-tile  colspan="2">
 
 
-<div class="main darkMode">
+      <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
+        <mat-form-field class="example-full-width darkMode" appearance="fill">
+          <mat-label>Type your text here</mat-label>
+          <input
+          name="usertext"
+          #userText="ngModel"
+          required
+          (keyup)="parsText();"
+          [(ngModel)]="qrForm.qrText"
+          matInput placeholder="http://www.site.com" >
+        </mat-form-field>
+        <p *ngIf="userText.errors && userText.touched && userText.dirty " >
+          <small> your test in not valid  </small>
+        </p>
+
+        <!--<button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>-->
+
+        </form>
+
+
+  </mat-grid-tile>
+
+  <mat-grid-tile colspan="1">
+    <mat-card class="example-card" style="text-align: center;">
+
+      <mat-card-subtitle>
+        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="qr_code"></mat-icon>
+        &nbsp;
+        QR Code</mat-card-subtitle>
+      <mat-card-title> {{'scan me' | uppercase}} </mat-card-title>
+      <mat-card-content>
+
+      <qrcode
+      [qrdata]="TextToConvert"
+      [width]="qrCodeWidth"
+      (qrCodeURL)="onChangeURL($event)"
+      [errorCorrectionLevel]="'M'"
+      [elementType]="qrCodeElmentType">
+      </qrcode>
+
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-raised-button color="accent">
+          <mat-icon>share</mat-icon>
+          Share
+      </button>
+        <a mat-raised-button color="primary"
+        [href]="qrCodeDownloadLink"
+         download="qrcode"
+         >
+         <mat-icon>file_download</mat-icon>
+         Download
+        </a>
+      </mat-card-actions>
+      <mat-card-footer>
+        <!-- <mat-progress-bar
+        mode="indeterminate"
+         [bufferValue]="0"
+         [value] = "0"
+         >
+        </mat-progress-bar> -->
+      </mat-card-footer>
+    </mat-card>
+  </mat-grid-tile>
+
+</mat-grid-list>
 
 
 
-  <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
-    <mat-form-field class="example-full-width darkMode" appearance="fill">
-      <mat-label>Type your text here</mat-label>
-      <input
-      name="usertext"
-      #userText="ngModel"
-      required
-      (keyup)="parsText();"
-      [(ngModel)]="qrForm.qrText"
-      matInput placeholder="http://www.site.com" >
-    </mat-form-field>
-    <p *ngIf="userText.errors && userText.touched && userText.dirty " >
-      <small> your test in not valid  </small>
-    </p>
 
-    <!--<button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>-->
 
-    </form>
+
+
+
+
+
+
+
+
+
+
+<div class="main">
+
+
 
     <br>
 
-    <mat-chip-list aria-label="Fish selection">
+    <!-- <mat-chip-list aria-label="Fish selection">
       <mat-chip color="accent" selected
       [disabled]="!phoneChecker">
       <mat-icon>call</mat-icon> &nbsp;
@@ -162,43 +221,10 @@ autosize>
        <mat-icon>email </mat-icon> &nbsp;
      email </mat-chip>
 
-    </mat-chip-list>
+    </mat-chip-list> -->
 
 
-    <mat-card class="example-card darkMode">
 
-      <mat-card-subtitle class="darkMode">
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="qr_code"></mat-icon>
-        &nbsp;
-        QR Code</mat-card-subtitle>
-      <mat-card-title>scan the result</mat-card-title>
-      <mat-card-content>
-
-      <qrcode
-      [qrdata]="TextToConvert"
-      [width]="256"
-      (qrCodeURL)="onChangeURL($event)"
-      [errorCorrectionLevel]="'M'"
-      [elementType]="qrCodeElmentType">
-      </qrcode>
-
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-button>SHARE</button>
-        <a
-        [href]="qrCodeDownloadLink"
-         download="qrcode"
-         >Download</a>
-      </mat-card-actions>
-      <mat-card-footer>
-        <!-- <mat-progress-bar
-        mode="indeterminate"
-         [bufferValue]="0"
-         [value] = "0"
-         >
-        </mat-progress-bar> -->
-      </mat-card-footer>
-    </mat-card>
 
 
 

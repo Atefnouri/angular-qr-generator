@@ -40,6 +40,8 @@ export class AppComponent {
   public emailChecker:boolean = false;
   public qrCodeDownloadLink: SafeUrl = "";
   public qrCodeElmentType:QRCodeElementType ='img';
+  public selectedTheme:string = "";
+  public qrCodeWidth:number = 256;
 
 constructor(private _snackBar: MatSnackBar){
 this.loadFromLocalStorage();
@@ -56,6 +58,8 @@ this.loadFromLocalStorage();
     (localStorage as Storage).setItem('qrCodeElmentType','img');
     (localStorage as Storage).setItem('darkMode',String(this.darkMode));
   }
+  this.selectedTheme = this.darkMode ? "dark" : "light";
+
   }
 
 
@@ -63,8 +67,10 @@ this.loadFromLocalStorage();
 
     if(e == 'dark'){
       this.darkMode = true;
+      this.selectedTheme  = 'dark';
     } else {
       this.darkMode = false;
+      this.selectedTheme  = 'light';
     }
 
   }
