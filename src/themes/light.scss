@@ -18,6 +18,12 @@ $my-app-theme: mat.define-light-theme(
 
 .light-theme{
 @include mat.all-component-themes($my-app-theme);
+.mat-snack-bar-container{
+
+  background-color: antiquewhite !important;
+
+
+}
 }
 
 

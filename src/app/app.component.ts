@@ -94,7 +94,13 @@ this.loadFromLocalStorage();
 
 
   saveSettingHandler = () => {
-    this._snackBar.open("Settings are saved 😄", "done");
+
+    let snackClass = this.darkMode ? "darkSnackBar" : "lightSnackBar";
+    this._snackBar.open("settings saved", 'dismiss',
+    {
+      duration: 2000,
+      panelClass: [snackClass]
+    });
   }
 
   // public toggleDarkMode = () => {
