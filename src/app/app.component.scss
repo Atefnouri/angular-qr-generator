@@ -114,7 +114,7 @@ mat-card{
 
 
 .example-card {
-  min-width: 800px;
+  min-width: 500px;
   max-height: 500px;
   margin-top: 150px;
   margin-left: 20px;
@@ -146,4 +146,23 @@ mat-card{
 
 mat-drawer-container{
   height: 100%;
+}
+
+.uperform {
+  display: flex;
+  padding: 0px;
+
+  .right-side{
+    width: 80%;
+    padding-right: 10px;
+
+  }
+
+  .left-side{
+    padding-top: 2px;
+    button{
+      height: 50px;
+    }
+  }
+
 }

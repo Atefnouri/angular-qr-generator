@@ -1,0 +1,23 @@
+@use "@angular/material" as mat;
+
+@include mat.core();
+
+$my-limetheme-primary: mat.define-palette(mat.$light-green-palette,A400);
+$my-limetheme-accent: mat.define-palette(mat.$gray-palette, 700);
+$my-limetheme-warn: mat.define-palette(mat.$red-palette);
+
+$my-limetheme-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-limetheme-primary,
+      accent: $my-limetheme-accent,
+      warn: $my-limetheme-warn,
+    ),
+  )
+);
+
+.lime-theme{
+@include mat.all-component-themes($my-limetheme-theme);
+background-color: rgb(255, 255, 255) !important;
+}
+

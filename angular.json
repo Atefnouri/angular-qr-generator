@@ -27,7 +27,8 @@
             "styles": [
               "src/styles.scss",
               "src/themes/light.scss",
-              "src/themes/dark.scss"
+              "src/themes/dark.scss",
+              "src/themes/limegreentheme.scss"
             ],
             "scripts": []
           },

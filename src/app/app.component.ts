@@ -32,6 +32,7 @@ export class AppComponent {
   }
   title = 'angularqrgen';
   public darkMode = false;
+  public limeTheme = false;
   public TextToConvert:string = "welcome";
 
   public textChecker:boolean = false;
@@ -41,6 +42,7 @@ export class AppComponent {
   public qrCodeDownloadLink: SafeUrl = "";
   public qrCodeElmentType:QRCodeElementType ='img';
   public selectedTheme:string = "";
+  public selectedColor:string = "";
   public qrCodeWidth:number = 256;
 
 constructor(private _snackBar: MatSnackBar){
@@ -74,6 +76,18 @@ this.loadFromLocalStorage();
     }
 
   }
+
+  themeColorHandler = (e:any) =>{
+
+    if(e == 'lime'){
+      this.limeTheme = true;
+      this.selectedColor  = e ;
+    }
+
+  }
+
+
+
 
 
   // private getLoclStorage():string{
@@ -173,8 +187,15 @@ this.loadFromLocalStorage();
   }
 
 
+  public  getColor = ():string =>{
 
+      if(this.darkMode){
+        return "#304ffe";
+      } else {
+        return "#536dfe";
+      }
 
+}
 
 }
 

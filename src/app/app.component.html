@@ -1,6 +1,6 @@
 <mat-drawer-container
 class="example-container light-theme"
-[ngClass]="{'dark-theme' : darkMode}"
+[ngClass]="{'dark-theme' : darkMode , 'lime-theme' : limeTheme}"
 autosize>
 
 <!--Settings-->
@@ -27,15 +27,12 @@ autosize>
 
     <mat-form-field appearance="fill">
       <mat-label>Theme color</mat-label>
-      <mat-select>
-        <mat-option>
-          indego-pink
+      <mat-select  [(ngModel)]="selectedColor" (selectionChange)="themeColorHandler($event.value)">
+        <mat-option value="purple">
+          purple-pink
         </mat-option>
-        <mat-option>
-         lime green
-        </mat-option>
-        <mat-option>
-          Blue
+        <mat-option value="lime">
+          lime-gray
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -94,15 +91,15 @@ autosize>
     Github
   </a>
 
+  <mat-icon *ngIf="darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
+  <mat-icon *ngIf="!darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="light_mode"></mat-icon>
 
   <a mat-button href="#" (click)="drawer.toggle()"  aria-label="Example icon-button with heart icon">
     <mat-icon>settings</mat-icon>
-
   </a>
 
 
-  <!-- <mat-icon *ngIf="darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="dark_mode"></mat-icon>
-  <mat-icon *ngIf="!darkMode" aria-hidden="false" aria-label="Example home icon" fontIcon="light_mode"></mat-icon> -->
+
 </mat-toolbar-row>
 
 
@@ -110,6 +107,9 @@ autosize>
   <h1> {{'Angular qr code gen' | uppercase}} </h1>
 </mat-toolbar-row>
 
+<div class="footer" [style.background-color]="getColor()" #footer>
+  Atef Nouri | 2022
+  </div>
 
 </mat-toolbar>
 
@@ -121,31 +121,50 @@ autosize>
   <mat-card class="example-card">
     <mat-card-header>
       <div mat-card-avatar class="example-header-image"></div>
-      <mat-card-title>Shiba Inu</mat-card-title>
-      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+      <mat-card-title>Generate</mat-card-title>
+      <mat-card-subtitle>{{ 'scan it!' | uppercase }}</mat-card-subtitle>
     </mat-card-header>
     <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
     <mat-card-content>
-      <div class="rightSide">
-        <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
-          <mat-form-field class="example-full-width darkMode" appearance="fill">
-            <mat-label>Type your text here</mat-label>
-            <input
-            name="usertext"
-            #userText="ngModel"
-            required
-            (keyup)="parsText();"
-            [(ngModel)]="qrForm.qrText"
-            matInput placeholder="qr data " >
-          </mat-form-field>
-          <p *ngIf="userText.errors && userText.touched && userText.dirty " >
-            <small> your test in not valid  </small>
-          </p>
 
-          <!--<button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>-->
+      <div class="uperform">
 
-          </form>
+        <div class="right-side">
+          <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
+            <mat-form-field class="example-full-width darkMode" appearance="fill">
+              <mat-label>Type your text here</mat-label>
+              <input
+              name="usertext"
+              #userText="ngModel"
+              required
+              (keyup)="parsText();"
+              [(ngModel)]="qrForm.qrText"
+              matInput placeholder="qr data " >
+            </mat-form-field>
+            <p *ngIf="userText.errors && userText.touched && userText.dirty " >
+              <small> your test in not valid  </small>
+            </p>
+
+            <!-- <button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button> -->
+
+            </form>
+        </div>
+
+
+        <div class="left-side">
+
+          <button  mat-flat-button color="primary">
+            <mat-icon>upload_file</mat-icon>
+            Load your Logo</button>
+
+        </div>
+
       </div>
+
+
+
+
+
 
       <div class="leftSide">
 
@@ -176,6 +195,8 @@ autosize>
       </a>
     </mat-card-actions>
   </mat-card>
+
+
 
 
 
@@ -232,9 +253,6 @@ autosize>
 
 </div>
 
-<div class="footer">
-  <p> Atef Nouri | 2022</p>
-</div>
 
 </mat-drawer-container>
 
