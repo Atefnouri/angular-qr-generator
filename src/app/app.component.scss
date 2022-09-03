@@ -111,3 +111,40 @@ margin-bottom: 20px;
 mat-card{
   width: fit-content;
 }
+
+
+.example-card {
+  min-width: 800px;
+  max-height: 500px;
+  margin-top: 150px;
+  margin-left: 20px;
+  display: inline-block;
+}
+
+
+.leftSide {
+  margin-top: 10px;
+}
+
+.example-header-image {
+  background-image: url('https://upload.wikimedia.org/wikipedia/commons/thumb/7/78/Qrcode_wikipedia_fr_v2clean.png/800px-Qrcode_wikipedia_fr_v2clean.png');
+  background-size: cover;
+}
+
+.footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  background-color: #304ffe;
+  color: white;
+  padding: 10px;
+}
+
+.darkBG{
+
+  background-color: #303030;
+
+}
+
+

@@ -107,83 +107,83 @@ autosize>
 
 
 <mat-toolbar-row >
-  <h1>Angular qr code gen app</h1>
+  <h1> {{'Angular qr code gen' | uppercase}} </h1>
 </mat-toolbar-row>
 
 
 </mat-toolbar>
 
 
-<mat-grid-list cols="3" rowHeight="800px" gutterSize="200px">
-  <mat-grid-tile  colspan="2">
+
+<div class="main" style="text-align:center ;">
 
 
-      <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
-        <mat-form-field class="example-full-width darkMode" appearance="fill">
-          <mat-label>Type your text here</mat-label>
-          <input
-          name="usertext"
-          #userText="ngModel"
-          required
-          (keyup)="parsText();"
-          [(ngModel)]="qrForm.qrText"
-          matInput placeholder="http://www.site.com" >
-        </mat-form-field>
-        <p *ngIf="userText.errors && userText.touched && userText.dirty " >
-          <small> your test in not valid  </small>
-        </p>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Shiba Inu</mat-card-title>
+      <mat-card-subtitle>Dog Breed</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
+      <div class="rightSide">
+        <form  #userForm="ngForm"  (ngSubmit)="sendForm()"  class="example-form">
+          <mat-form-field class="example-full-width darkMode" appearance="fill">
+            <mat-label>Type your text here</mat-label>
+            <input
+            name="usertext"
+            #userText="ngModel"
+            required
+            (keyup)="parsText();"
+            [(ngModel)]="qrForm.qrText"
+            matInput placeholder="qr data " >
+          </mat-form-field>
+          <p *ngIf="userText.errors && userText.touched && userText.dirty " >
+            <small> your test in not valid  </small>
+          </p>
 
-        <!--<button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>-->
+          <!--<button class="darkMode" type="submit" color="accent" [disabled]="userForm.invalid" mat-raised-button>Generate</button>-->
 
-        </form>
+          </form>
+      </div>
+
+      <div class="leftSide">
+
+        <qrcode
+        [qrdata]="TextToConvert"
+        [width]="qrCodeWidth"
+        (qrCodeURL)="onChangeURL($event)"
+        [errorCorrectionLevel]="'M'"
+        [elementType]="qrCodeElmentType">
+        </qrcode>
+
+      </div>
 
 
-  </mat-grid-tile>
 
-  <mat-grid-tile colspan="1">
-    <mat-card class="example-card" style="text-align: center;">
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="accent">
+        <mat-icon>share</mat-icon>
+        Share
+    </button>
+      <a mat-raised-button color="primary"
+      [href]="qrCodeDownloadLink"
+       download="qrcode"
+       >
+       <mat-icon>file_download</mat-icon>
+       Download
+      </a>
+    </mat-card-actions>
+  </mat-card>
 
-      <mat-card-subtitle>
-        <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="qr_code"></mat-icon>
-        &nbsp;
-        QR Code</mat-card-subtitle>
-      <mat-card-title> {{'scan me' | uppercase}} </mat-card-title>
-      <mat-card-content>
 
-      <qrcode
-      [qrdata]="TextToConvert"
-      [width]="qrCodeWidth"
-      (qrCodeURL)="onChangeURL($event)"
-      [errorCorrectionLevel]="'M'"
-      [elementType]="qrCodeElmentType">
-      </qrcode>
 
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-raised-button color="accent">
-          <mat-icon>share</mat-icon>
-          Share
-      </button>
-        <a mat-raised-button color="primary"
-        [href]="qrCodeDownloadLink"
-         download="qrcode"
-         >
-         <mat-icon>file_download</mat-icon>
-         Download
-        </a>
-      </mat-card-actions>
-      <mat-card-footer>
-        <!-- <mat-progress-bar
-        mode="indeterminate"
-         [bufferValue]="0"
-         [value] = "0"
-         >
-        </mat-progress-bar> -->
-      </mat-card-footer>
-    </mat-card>
-  </mat-grid-tile>
+</div>
 
-</mat-grid-list>
+
+
+
 
 
 
@@ -232,6 +232,9 @@ autosize>
 
 </div>
 
+<div class="footer">
+  <p> Atef Nouri | 2022</p>
+</div>
 
 </mat-drawer-container>
 
