@@ -15,7 +15,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
-
+import {MatDialog} from '@angular/material/dialog';
 @NgModule({
   imports: [
 
@@ -38,6 +38,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatDividerModule,
     MatTabsModule,
     MatGridListModule,
+    MatDialog
   ]
 })
 export class MaterialModule { }
