@@ -8,8 +8,7 @@ autosize>
 
     <h4>Settings</h4>
 
-    <hr>
-    <h5> Theming</h5>
+
 
     <mat-form-field appearance="fill">
       <mat-label>Light / Dark Mode</mat-label>
@@ -21,12 +20,15 @@ autosize>
         <mat-option value="dark">
           Dark Mode
         </mat-option>
+        <mat-option value="sys">
+          System
+        </mat-option>
       </mat-select>
     </mat-form-field>
 
 
     <mat-form-field appearance="fill">
-      <mat-label>Theme color</mat-label>
+      <mat-label>Color Palette </mat-label>
       <mat-select  [(ngModel)]="selectedColor" (selectionChange)="themeColorHandler($event.value)">
         <mat-option value="purple">
           purple-pink
@@ -37,8 +39,7 @@ autosize>
       </mat-select>
     </mat-form-field>
 
-    <hr>
-    <h5>Perfernces</h5>
+
 
     <mat-form-field appearance="fill">
       <mat-label>Download File Format</mat-label>
@@ -168,13 +169,38 @@ autosize>
 
       <div class="leftSide">
 
-        <qrcode
+        <!-- <qrcode
         [qrdata]="TextToConvert"
         [width]="qrCodeWidth"
         (qrCodeURL)="onChangeURL($event)"
         [errorCorrectionLevel]="'M'"
-        [elementType]="qrCodeElmentType">
-        </qrcode>
+        [elementType]="qrCodeElmentType"
+        [elementType]="'canvas'"
+        [imageSrc]="'./assets/logo.png'"
+        [imageHeight]="75"
+        [imageWidth]="75"
+        >
+        </qrcode> -->
+
+        <qrcode
+        #qrElement
+        [qrdata]="TextToConvert"
+        [allowEmptyString]="true"
+        [ariaLabel]="'QR Code image with the following content...'"
+        [cssClass]="'center'"
+        [colorDark]="'#000000ff'"
+        [colorLight]="'#ffffffff'"
+        [elementType]="elementType"
+        [errorCorrectionLevel]="'M'"
+        [imageSrc]="imageSrc"
+        [imageHeight]="imageHeight"
+        [imageWidth]="imageWidth"
+        [margin]="4"
+        [scale]="1"
+        [title]="'A custom title attribute'"
+        [width]="300"
+        (qrCodeURL)="onChangeURL($event)"
+      ></qrcode>
 
       </div>
 
@@ -186,13 +212,30 @@ autosize>
         <mat-icon>share</mat-icon>
         Share
     </button>
-      <a mat-raised-button color="primary"
+
+
+    <button *ngIf="this.elementType !== 'svg'" mat-raised-button color="primary"
+    (click)="saveAsImage(qrElement)">Download QR Code Image</button>
+  <a *ngIf="this.elementType === 'svg'" mat-raised-button color="primary" [href]="qrCodeDownloadLink"
+    download="qrcode">Download QR Code
+    Image</a>
+
+      <!-- <a mat-raised-button color="primary"
       [href]="qrCodeDownloadLink"
        download="qrcode"
        >
        <mat-icon>file_download</mat-icon>
        Download
       </a>
+
+      <div class="downloadButton">
+        <button *ngIf="this.elementType !== 'svg'" mat-raised-button color="primary"
+          (click)="saveAsImage(qrElement)">Download QR Code Image</button>
+        <a *ngIf="this.elementType === 'svg'" mat-raised-button color="primary" [href]="qrCodeDownloadLink"
+          download="qrcode">Download QR Code
+          Image</a>
+      </div> -->
+
     </mat-card-actions>
   </mat-card>
 
