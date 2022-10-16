@@ -6,6 +6,10 @@ import { QRCodeElementType, QRCodeModule } from 'angularx-qrcode';
 import { SafeUrl } from '@angular/platform-browser';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { MaterialModule } from './Material/Material.module';
+import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
+import { OverlayComponent } from './overlay/app.overlay.component';
+
+
 
 
 
@@ -50,8 +54,14 @@ export class AppComponent {
   public imageHeight:number = 79;
   public imageWidth:number = 79;
 
-constructor(private _snackBar: MatSnackBar){
+constructor(private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet){
 this.loadFromLocalStorage();
+
+}
+
+openDialog(){
+  //this.dialog.open(OverlayComponent);
+  this._bottomSheet.open(OverlayComponent);
 }
 
 
