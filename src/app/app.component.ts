@@ -8,6 +8,8 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { MaterialModule } from './Material/Material.module';
 import {MatBottomSheet, MatBottomSheetRef} from '@angular/material/bottom-sheet';
 import { OverlayComponent } from './overlay/app.overlay.component';
+import { AngularFireStorage, AngularFireStorageModule } from '@angular/fire/compat/storage';
+
 
 
 
@@ -24,8 +26,7 @@ import { OverlayComponent } from './overlay/app.overlay.component';
     MatChipsModule,
     QRCodeModule,
     MaterialModule,
-
-
+    AngularFireStorageModule
   ],
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -50,11 +51,19 @@ export class AppComponent {
   public selectedColor:string = "";
   public qrCodeWidth:number = 256;
   public elementType:QRCodeElementType = "canvas";
-  public imageSrc:string  = './assets/logo.png';
+  public imageSrc:string  = 'https://firebasestorage.googleapis.com/v0/b/angualrqrimage.appspot.com/o/logo.png?alt=media&token=77481c83-b3c5-4007-8a89-c5feabdd2518';
+  //public imageSrc:string  = './assets/logo.png';
   public imageHeight:number = 79;
   public imageWidth:number = 79;
 
-constructor(private _snackBar: MatSnackBar, private _bottomSheet: MatBottomSheet){
+  //public uploadPercent: Observable<number>;
+  //public downloadURL: Observable<string>;
+
+constructor(
+  private _snackBar: MatSnackBar,
+  private _bottomSheet: MatBottomSheet,
+  private storage: AngularFireStorage
+  ){
 this.loadFromLocalStorage();
 
 }
@@ -261,6 +270,15 @@ private convertBase64ToBlob(Base64Image: string) {
   // return blob image after conversion
   return new Blob([uInt8Array], { type: imageType })
 }
+
+
+
+// uploadFile(event:any) {
+//   const file = event.target.files[0];
+//   const filePath = 'name-your-file-path-here';
+//   const task = this.storage.upload(filePath, file);
+// }
+
 
 }
 

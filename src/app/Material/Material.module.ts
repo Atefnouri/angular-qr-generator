@@ -16,10 +16,12 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { AngularFireModule } from '@angular/fire/compat';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   imports: [
-
+    AngularFireModule.initializeApp(environment.firebaseConfig),
   ],
   declarations: [],
   exports: [
@@ -39,8 +41,8 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     MatDividerModule,
     MatTabsModule,
     MatGridListModule,
-    MatBottomSheetModule
-
+    MatBottomSheetModule,
+    AngularFireModule
 
   ]
 })
