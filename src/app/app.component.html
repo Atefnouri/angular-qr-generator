@@ -239,7 +239,41 @@ autosize>
     </mat-card-actions>
   </mat-card>
 
+  <mat-card class="example-card">
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>File Upload Feature</mat-card-title>
+      <mat-card-subtitle>{{ 'scan it!' | uppercase }}</mat-card-subtitle>
+    </mat-card-header>
+    <!-- <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu"> -->
+    <mat-card-content>
 
+
+
+
+
+      <h3>Show a file-select field which allows only one file to be chosen:</h3>
+      <form action="/action_page.php">
+        <label for="myfile">Select a file:</label>
+        <input type="file" id="myfile" (change)="uploadFile($event)"  name="myfile"><br><br>
+
+        <button mat-raised-button color="accent">
+          <mat-icon>upload file </mat-icon>
+          upload file
+      </button>
+      </form>
+
+
+
+    </mat-card-content>
+    <mat-card-actions>
+      <!-- <button mat-raised-button color="accent">
+        <mat-icon>upload file </mat-icon>
+        upload file
+    </button> -->
+
+    </mat-card-actions>
+  </mat-card>
 
 
 

@@ -273,11 +273,11 @@ private convertBase64ToBlob(Base64Image: string) {
 
 
 
-// uploadFile(event:any) {
-//   const file = event.target.files[0];
-//   const filePath = 'name-your-file-path-here';
-//   const task = this.storage.upload(filePath, file);
-// }
+uploadFile(event:any) {
+  const file = event.target.files[0];
+  const filePath = 'name-your-file-path-here';
+  const task = this.storage.upload(filePath, file);
+}
 
 
 }
